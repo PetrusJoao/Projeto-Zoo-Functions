@@ -14,7 +14,10 @@ describe('Testes da função HandlerElephants', () => {
     expect(handlerElephants('count')).toBe(4);
   });
   test('handlerElephants retorna os nomes dos residentes de elefantes se o parametro de entrada for names', () => {
-    expect(handlerElephants('names')).toBe(['Ilana', 'Orval', 'Bea', 'Jefferson']);
+    expect(handlerElephants('names')).toEqual(['Ilana', 'Orval', 'Bea', 'Jefferson']);
+  });
+  test('handlerElephants retorna amédia de idade dos elefantes se o parametro de entrada for averageAge', () => {
+    expect(handlerElephants('averageAge')).toBeCloseTo(10.5);
   });
 
   /* test('getElephants retorna Defined', () => {
