@@ -15,14 +15,8 @@ function countEntrants(entrants) {
   return total;
 }
 
-function calculateEntry(entrants) {
-  // seu código aqui
-  if (entrants === undefined || Object.keys(entrants).length === 0) {
-    console.log('aqui');
-    return 0;
-  }
-  countEntrants(entrants);
-  let valor = 0;
+function calculo(entrants) {
+  let valor;
   Object.values(countEntrants(entrants)).forEach((element, index) => {
     if (index === 0) {
       valor = element * 20.99;
@@ -33,6 +27,14 @@ function calculateEntry(entrants) {
     }
   });
   return valor;
+}
+
+function calculateEntry(entrants) {
+  // seu código aqui
+  if (!entrants || Object.keys(entrants).length === 0) {
+    return 0;
+  }
+  return calculo(entrants);
 }
 
 module.exports = { calculateEntry, countEntrants };
