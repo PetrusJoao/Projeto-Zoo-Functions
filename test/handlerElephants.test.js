@@ -19,6 +19,12 @@ describe('Testes da função HandlerElephants', () => {
   test('handlerElephants retorna amédia de idade dos elefantes se o parametro de entrada for averageAge', () => {
     expect(handlerElephants('averageAge')).toBeCloseTo(10.5);
   });
+  test('handlerElephants retorna null se o parametro de entrada for elephants', () => {
+    expect(handlerElephants('elephants')).toBe(null);
+  });
+  test('handlerElephants retorna um array com as informações se o parametro de entrada for availability', () => {
+    expect(handlerElephants('availability')).toEqual(['Friday', 'Saturday', 'Sunday', 'Tuesday']);
+  });
 
   /* test('getElephants retorna Defined', () => {
     expect(typeof handlerElephants).toBe('function');
