@@ -17,27 +17,22 @@ function countEntrants(entrants) {
 
 function calculateEntry(entrants) {
   // seu código aqui
-  if (Object.keys(entrants).length === 0) {
+  if (entrants === undefined || Object.keys(entrants).length === 0) {
     console.log('aqui');
     return 0;
   }
   countEntrants(entrants);
   let valor = 0;
-  /* return do countEntrants */.forEach((element) => {
-    valor = element.child * 20.99 + element.adult * 49.99 + element.senior * 24.99;
+  Object.values(countEntrants(entrants)).forEach((element, index) => {
+    if (index === 0) {
+      valor = element * 20.99;
+    } else if (index === 1) {
+      valor += element * 49.99;
+    } else if (index === 2) {
+      valor += element * 24.99;
+    }
   });
-  console.log(valor);
+  return valor;
 }
 
 module.exports = { calculateEntry, countEntrants };
-
-const entrants = [/* ]; */
-  { name: 'Lara Carvalho', age: 5 },
-  { name: 'Frederico Moreira', age: 5 },
-  { name: 'Pedro Henrique Carvalho', age: 5 },
-  { name: 'Maria Costa', age: 18 },
-  { name: 'Núbia Souza', age: 18 },
-  { name: 'Carlos Nogueira', age: 50 },
-];
-
-calculateEntry(entrants);
