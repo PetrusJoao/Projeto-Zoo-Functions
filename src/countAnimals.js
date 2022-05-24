@@ -1,14 +1,6 @@
 const { species } = require('../data/zoo_data');
 
-function countAnimals(animal) {
-  if (animal === undefined) {
-    const pegaPopulation = species.map((exemplar) => exemplar.residents.length);
-    const allAnimals = {};
-    const pegaAnimals = species.map((exemplar) => exemplar.name).forEach((element, index) => {
-      allAnimals[element] = pegaPopulation[index];
-    });
-    return allAnimals;
-  }
+function countedAnimals(animal) {
   if (Object.keys(animal).length === 1) {
     const procuraAnimal = species.find(
       (animalEspecifico) => animalEspecifico.name.includes(Object.values(animal)),
@@ -22,6 +14,19 @@ function countAnimals(animal) {
     );
     return procuraOutroAnimal.length;
   }
+}
+
+function countAnimals(animal) {
+  if (animal === undefined) {
+    const pegaPopulation = species.map((exemplar) => exemplar.residents.length);
+    const allAnimals = {};
+    const pegaAnimals = species.map((exemplar) => exemplar.name).forEach((element, index) => {
+      allAnimals[element] = pegaPopulation[index];
+    });
+    console.log(pegaAnimals);
+    return allAnimals;
+  }
+  return countedAnimals(animal);
 }
 
 module.exports = countAnimals;
