@@ -1,19 +1,30 @@
 const { employees, species } = require('../data/zoo_data');
 const data = require('../data/zoo_data');
 
+const findEmployee = (id) => employees.find((employee) => employee.id === id);
+
+const findFirstSpecieId = (employee) => employee.responsibleFor.shift();
+
+const findFirstSpecie = (firstSpecieId) => species.find((specie) => specie.id === firstSpecieId);
+
+const ages = (firstSpecie) => firstSpecie.residents.map((idade) => idade.age)
+  .sort((a, b) => b - a);
+
+const oldestIn = (ageIn) => ageIn.shift();
+
 function getOldestFromFirstSpecies(id) {
   // seu código aqui
-  const findEmployee = employees.find((employee) => employee.id === id);
+  const employee = findEmployee(id);
 
-  const firstSpecieId = findEmployee.responsibleFor.shift();
+  const firstSpecieId = findFirstSpecieId(employee);
 
-  const findFirstSpecie = species.find((specie) => specie.id === firstSpecieId);
+  const firstSpecie = findFirstSpecie(firstSpecieId);
 
-  const ages = findFirstSpecie.residents.map((idade) => idade.age).sort((a, b) => b - a);
+  const age = ages(firstSpecie);
 
-  const oldest = ages.shift();
+  const oldest = oldestIn(age);
 
-  const findOldest = findFirstSpecie.residents
+  const findOldest = firstSpecie.residents
     .find((velho) => velho.age === oldest);
 
   const answer = Object.values(findOldest);
@@ -22,3 +33,4 @@ function getOldestFromFirstSpecies(id) {
 }
 
 module.exports = getOldestFromFirstSpecies;
+getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1');

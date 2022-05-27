@@ -13,6 +13,9 @@ describe('Testes da função getOpeningHours', () => {
   test('getOpeningHours retorna a mensagem de zoo fechado se o dia e hora passados foram válidos', () => {
     expect(getOpeningHours('Thursday', '10:00-PM')).toBe('The zoo is closed');
   });
+  test('getOpeningHours retorna a mensagem de zoo fechado se o dia passado for Monday', () => {
+    expect(getOpeningHours('Monday', '9:00-AM')).toBe('The zoo is closed');
+  });
   test('getOpeningHours retorna a mensagem de erro', () => {
     expect(() => {
       getOpeningHours('Thursday', '10:00-GM');
