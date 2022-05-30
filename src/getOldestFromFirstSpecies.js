@@ -28,9 +28,10 @@ function getOldestFromFirstSpecies(id) {
     .find((velho) => velho.age === oldest);
 
   const answer = Object.values(findOldest);
+  console.log(answer);
 
   return answer;
 }
 
 module.exports = getOldestFromFirstSpecies;
-getOldestFromFirstSpecies('c5b83cb3-a451-49e2-ac45-ff3f54fbe7e1');
+// getOldestFromFirstSpecies('c1f50212-35a6-4ecd-8223-f835538526c2');
